@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="domu">Elektronický Geocaching</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex">
+      <div class="collapse navbar-collapse" id="navbarContent">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact:true}">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="registrace" routerLinkActive="active-link">Registrace</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="domu" routerLinkActive="active-link">Hlavní strana</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="sberatelske-predmety" routerLinkActive="active-link">Sběratelské předměty</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="putovni-predmety" routerLinkActive="active-link">Putovní předměty</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="kese" routerLinkActive="active-link">Keše</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="objednavka" routerLinkActive="active-link">Objednání</a>
+            </li>
+        </ul>
+        <div class="dropdown ml-auto">
+          <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="assets/img/pfp.png" class="img-fluid rounded-circle profile-image-dropdown "alt="Responsive image">
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item bi bi-person-circle" href="ucet"> Účet</a>
+            <button class="dropdown-item bi bi-box-arrow-left" type="button" (click)="logout()"> Odhlásit se</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </nav>

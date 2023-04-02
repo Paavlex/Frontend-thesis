@@ -1,0 +1,25 @@
+<!-- Registrace uživatele, podobně jako login -->
+<div class="container">
+    <div class="row register-row justify-content-center align-content-center">
+        <div class="col-lg-3 col-md-6 col-sm-12 offset-lg-1">
+            <form [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="mb-2">
+                        <label for="InputEmail" class="form-label">E-mail</label>
+                        <input type="email" class="form-control" id="InputEmail" name="InputEmail" formControlName="email" placeholder="Email">
+                    </div>
+                    <div class="mb-2">
+                        <label for="InputUsername" class="form-label">Přezdívka</label>
+                        <input type="text" class="form-control" id="InputUsername" name="InputUsername" formControlName="name" placeholder="Přezdívka">
+                    </div>
+                    <div class="mb-3">
+                    <label for="InputPassword" class="form-label">Heslo</label>
+                    <input type="password" class="form-control" id="InputPassword" name="InputPassword" formControlName="password" placeholder="Heslo">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Registrovat se</button>
+            </form>
+        </div>
+        <div class="col-lg-8 col-md-6 col-sm-12">
+            <h1 class="text-center">Link to app?</h1>
+        </div>
+    </div>
+</div>

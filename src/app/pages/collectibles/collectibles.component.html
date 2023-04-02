@@ -1,0 +1,49 @@
+<!-- template pro komentář protože jsem líný je psát -->
+<!--  -->
+
+<div class="container-fluid">
+    <div class="row row-one justify-content-center py-3">
+        <div class="col-lg-12 col-mg-12 col-sm-12">
+            <h2 class="text-center">Zde najdete své sběratelské předěty</h2>
+        </div>
+    </div>
+    <div class="row align-items-center">
+        <div class="col-lg-2">
+            <!-- 3 ze  4 bude doplněno o proměnné které budou korespondovat s počtem nalezených obrázků atd. -->
+            <p class="text-center">Nalezeno {{ collectibles.pocetsberpred }} ze {{ allcollectibles }} sběratelských předmětů</p>
+        </div>
+        <div class="col-lg-8">
+            
+            <!-- tady se bude muset udělat nějaká back-end magie aby se dalo pomocí for loop projít adresář s obraázky a všechny zobrazit -->
+            <div class="container border">
+                <div class="row row-two justify-content-center py-2">
+                    <div class="col-lg-5">
+                         <!-- nenalzeným obrázkům bude dána třída img-blur, která obrázek rozmaže -->
+                        <img src="assets/img/car1.png" class="img-fluid" [ngClass]="{'img-blur': !collectibles.sberpredmet.one}" alt="Responsive image">
+                    </div>
+                    <div class="col-lg-5">
+                         <!-- nalezenému obrázku bude třída odebrána -->
+                        <img src="assets/img/car2.png"  class="img-fluid" [ngClass]="{'img-blur': !collectibles.sberpredmet.two}" alt="Responsive image">
+                
+                    </div>
+
+                </div>
+                
+                <div class="row row-threee justify-content-center py-3">
+                    <div class="col-lg-5">
+                        <img src="assets/img/car3.png" class="img-fluid" [ngClass]="{'img-blur': !collectibles.sberpredmet.three}" alt="Responsive image">
+                
+                    </div>
+                    <div class="col-lg-5">
+                        <img src="assets/img/car4.png" class="img-fluid" [ngClass]="{'img-blur': !collectibles.sberpredmet.four}" alt="Responsive image">
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2 col-md-2 ">
+            
+            
+        </div> 
+    </div>
+</div>

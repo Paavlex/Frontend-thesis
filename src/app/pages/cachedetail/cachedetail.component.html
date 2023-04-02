@@ -1,0 +1,71 @@
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col-lg-2  d-flex justify-content-end align-items-start">
+            <button type="button" class="btn p-4 rounded-10 back-button" routerLink="/kese" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16" >
+                    <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                  </svg>
+            </button>
+        </div>
+        <div class="col-lg-8">
+            <div class="row py-3"><h2 class="text-center">Vaše keše</h2></div>
+            <div class="row ">
+                <div class="card">
+                    <div class="row ">
+                        <h4 class="text-left col-3">Název keše:</h4> <h4 class="text-left col-9">{{cache.nazev}}</h4>  
+                    </div>
+                    <div class="row">
+                        <h4 class="text-left col-3">ID keše:</h4> <h4 class="text-left col-9">{{cache.idkarty}}</h4>  
+                    </div>
+                    <div class="row">
+                        <h4 class="text-left col-3">Počet nálezů:</h4> <h4 class="text-left col-9">{{cache.pocetnalezu}}</h4>  
+                    </div>
+                    <div class="row">
+                        <h4 class="text-left col-3">Zeměpisná délka:</h4> <h4 class="text-left col-9">{{cache.zemdelka}}</h4>  
+                    </div>
+                    <div class="row">
+
+                        <h4 class="text-left col-3">Zeměpisná šířka:</h4> <h4 class="text-left col-9">{{cache.zemsirka}}</h4>  
+                    </div>
+                    <div class="row">
+
+                        <h4 class="text-left col-3">Putovní předmět:</h4> <h4 class="text-left col-9">{{cache.putpredmet}}</h4>  
+                    </div>
+                    <div class="row">
+
+                        <h4 class="text-left col-3">Popis:</h4> <h4 class="text-left col-9 popis" [innerHTML]="cache.popis"></h4>  
+                    </div>
+                    
+                </div>
+                
+            </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+    <div class="row py-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <h3 class="text-center"> Upravení keše</h3>
+            <form [formGroup]="cacheForm" (ngSubmit)="changeCache()">
+                <div class="mb-2">
+                    <label for="InputName" class="form-label">Název keše</label>
+                    <input type="text" class="form-control" id="InputName" name="InputName" formControlName="name" placeholder="Moje keš">
+                </div>
+                <div class="mb-2">
+                    <label for="InputInfo" class="form-label">Informace o keši</label>
+                    <textarea ngModel="popisKese" class="form-control" id="InputInfo" name="InputInfo" formControlName="popis" rows="10"></textarea>
+                </div>
+                <div class="mb-2">
+                    <label for="InputLng" class="form-label">Zeměpisná délka</label>
+                    <input type="text" class="form-control" id="InputLng" name="InputLng" formControlName="lng" placeholder="12.3456">
+                </div>
+                <div class="mb-3">
+                <label for="InputLat" class="form-label">Zeměpisná šířka</label>
+                <input type="text" class="form-control" id="InputLat" name="InputLat" formControlName="lat" placeholder="12.3456">
+                </div>
+                <button type="submit" class="btn btn-primary">Upravit keš</button>
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+</div>

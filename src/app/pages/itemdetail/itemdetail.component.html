@@ -1,0 +1,80 @@
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col-lg-2  d-flex justify-content-end align-items-start"  (click)="hideInfo()">
+            <button type="button" class="btn p-4 rounded-10  back-button sticky-top" (click)="goBack()" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" fill="currentColor" class="bi bi-arrow-left-square" viewBox="0 0 16 16" >
+                    <path fill-rule="evenodd" d="M15 2a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2zM0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm11.5 5.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                  </svg>
+            </button>
+        </div>
+        <div class="col-lg-8">
+            <div class="row ">
+                <div class="card">
+                    <div class="row justify-content-center" (click)="hideInfo()">
+                        <img src="{{item.cesta}}" class="card-img-top image py-3" alt="Hollywood Sign on The Hill">
+                    </div>
+                    <div class="row " (click)="hideInfo()">
+                        <h4 class="text-left col-3">ID předmětu:</h4> <h4 class="text-left col-9">{{item.idputpredmetu}}</h4>  
+                    </div>
+                    <div class="row"  (click)="hideInfo()">
+                        <h4 class="text-left col-3">Pozice předmětu:</h4> <h4 class="text-left col-9">{{item.idpozice}}</h4>  
+                    </div>
+                    <div class="row"  (click)="hideInfo()">
+                        <div class="row">
+                            <h4 class="text-left">Pohyb předmětu:</h4>
+                        </div>
+                        
+                        <div class="card"  *ngFor="let cache of caches">
+                            <div class="row">
+                                <div class="col-4">
+
+                                    <h4 class="text-left">{{cache.nazev}}</h4>
+                                </div>
+                                <div class="col-2">Zeměpisná délka: </div>
+                                <div class="col-2">{{cache.zemdelka}}</div>
+                                <div class="col-2">Zeměpisná šířka: </div>
+                                <div class="col-2">{{cache.zemsirka}}</div>
+                            </div>
+                        </div>
+                        
+                    </div>
+
+                    <div class="row">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="collapse" data-target="#collapseMap" aria-expanded="false" aria-controls="collapseMap" [disabled]="!item.karty.length">Mapa</button>
+                        <div class="collapse" id="collapseMap">
+                            <google-map height="700px" width="100%" [center]="center" [zoom]="7">
+                                <!-- Přidání pozice na mapu, momentálně jen jedna na ukázku, lze přidat několik pozic najednou -->
+                                <map-marker *ngFor="let marker of markers"
+                                [position]="marker.position"
+                                [label]="marker.id.toString()"
+                                (mapClick)="cacheInfo(marker.id)"
+                                (mapClick)="toggleDiv()">
+                                </map-marker>
+                            </google-map>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                
+            </div>
+        </div>
+        <div class="col-lg-2">
+            <div [hidden]="infoDiv" cCollapse horizontal class="shadow sticky-top row" >
+                <div class="row"><h5 class="text-center">Informace o keši</h5></div>
+
+                <div class="row row-cols-2">
+                    <div class="col">Název</div>
+                    <div class="col">{{clickedCache.nazev}}</div>
+                    <div class="col">Zem. délka</div>
+                    <div class="col">{{clickedCache.zemdelka}}</div>
+                    <div class="col">Zem. šířka</div>
+                    <div class="col">{{clickedCache.zemsirka}}</div>
+                    <div class="col">Počet nalezení</div>
+                    <div class="col">{{clickedCache.pocetnalezu}}</div>
+                </div>
+                <button class="btn btn-secondary" (click)="setCache()">Přejít na stránku keše</button>
+            </div>
+        </div>
+    </div>
+</div>

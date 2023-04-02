@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <h2 class="text-center">Hlavní strana</h2>
+    <div class="row">
+        <div class="col-lg-2 col-md-2 ">
+            <div [hidden]="infoDiv" cCollapse horizontal class="shadow sticky-top row cardInfoDiv" >
+                <div class="row"><h5 class="text-center">Informace o keši</h5></div>
+                <div class="row row-cols-2">
+                    <div class="col">Název</div>
+                    <div class="col">{{clickedCache.nazev}}</div>
+                    <div class="col">Zem. délka</div>
+                    <div class="col">{{clickedCache.zemdelka}}</div>
+                    <div class="col">Zem. šířka</div>
+                    <div class="col">{{clickedCache.zemsirka}}</div>
+                    <div class="col">Počet nalezení</div>
+                    <div class="col">{{clickedCache.pocetnalezu}}</div>
+                </div>
+                <button class="btn btn-secondary" (click)="setCache()">Přejít na stránku keše</button>
+            </div>
+        </div>    
+        <div class="col-lg-8 col-md-8">
+            <google-map height="700px" width="100%" [center]="center" [zoom]="7">
+                <!-- Vložení několika markerů pomocí for loop -->
+                <map-marker *ngFor="let cache of caches"
+                [position]="cache.position"
+                [label]="cache.nazev.toString()"
+                (mapClick)="cacheInfo(cache.id)"
+                (mapClick)="showInfo()"
+                ></map-marker>
+            </google-map>
+        </div>    
+        <div class="col-lg-2 col-md-2 "  (click)="hideInfo()">
+            <div class="row">
+                    <h3 class="text-center">{{ account.username }}</h3>
+            </div>
+            <div class="row">
+                    <img src="assets/img/pfp.png" class="img-fluid rounded-circle profile-image mx-auto" alt="Responsive image">
+            </div>
+            <div class="row">
+                    <h4 class="text-center">Počet otevřených keší:</h4>
+                    <h4 class="text-center">{{ account.otevrenekesepoc }}</h4>
+            </div>
+        </div>    
+    </div>
+</div>
