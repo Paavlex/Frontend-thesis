@@ -118,6 +118,7 @@ export class TravelingitemsService {
     //let url = "http://127.0.0.1:8000/putovnipredmety/"
 
     var id = localStorage.getItem('user_id')
+    console.log(typeof id)
     var formData: any = new FormData
     formData.append("idpozice", id)
     formData.append("vlastnik", id)

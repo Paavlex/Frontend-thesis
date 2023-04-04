@@ -17,9 +17,6 @@ export interface AuthResponse{
 export class AuthService {
 
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-
-
-  
   private refreshTokenTimeout:any
   
   constructor(
