@@ -11,7 +11,9 @@
             <div class="row ">
                 <div class="card">
                     <div class="row justify-content-center" (click)="hideInfo()">
-                        <img src="{{item.cesta}}" class="card-img-top image py-3" alt="Hollywood Sign on The Hill">
+                        <!-- Podmínka pro zobrazení buď informace že hráč předmět nevlastní, nebo obrázek předmětu -->
+                        <img *ngIf="item.idputpredmetu == 'TG00000000000000000000'" src="/assets/img/Nothing.png" class="card-img-top image py-3" alt="Nothing">
+                        <img *ngIf="item.idputpredmetu != 'TG00000000000000000000'" src="/assets/img/AIITEM.png" class="card-img-top image py-3" alt="AiItem">
                     </div>
                     <div class="row " (click)="hideInfo()">
                         <h4 class="text-left col-3">ID předmětu:</h4> <h4 class="text-left col-9">{{item.idputpredmetu}}</h4>  

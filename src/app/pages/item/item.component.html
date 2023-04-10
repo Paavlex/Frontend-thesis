@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row py-3">
+        <div class="col-lg-2  d-flex justify-content-end align-items-start"> 
+        </div>
+        <div class="col-lg-8">
+            <div class="row ">
+                <div class="card">
+                    <div class="row justify-content-center">
+                        <!-- Podmínka pro zobrazení buď informace že hráč předmět nevlastní, nebo obrázek předmětu -->
+                        <img *ngIf="item.idputpredmetu == 'TG00000000000000000000'" src="/assets/img/Nothing.png" class="card-img-top image py-3" alt="Nothing">
+                        <img *ngIf="item.idputpredmetu != 'TG00000000000000000000'" src="/assets/img/AIITEM.png" class="card-img-top image py-3" alt="AiItem">
+
+                    </div>
+                    <div class="row">
+                        <h4 class="text-left col-3">ID předmětu:</h4> <h4 class="text-left col-9">{{item.idputpredmetu}}</h4>  
+                    </div>  
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-2">
+        </div>
+    </div>
+</div>

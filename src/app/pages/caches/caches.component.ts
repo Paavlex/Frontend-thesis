@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { InformationService } from '../main/information.service';
 import { GetcarddetailService } from './getcarddetail.service';
 import { MyCache } from 'src/app/Iinterfaces/cache';
 import { Router } from '@angular/router';
+import { ApiService } from '../register/api.service';
 
 @Component({
   selector: 'app-caches',
@@ -15,13 +15,13 @@ export class CachesComponent {
 
 
   constructor(
-    private information: InformationService,
     private cacheService: GetcarddetailService,
-    private router: Router
+    private router: Router,
+    private apiService: ApiService,
     ){}
 
   ngOnInit(){
-    this.information.getPlayerCaches().subscribe(data => {this.caches=data})
+    this.apiService.getPlayerCaches().subscribe(data => {this.caches=data})
   }
 
   // Přejití na danou stránku keše

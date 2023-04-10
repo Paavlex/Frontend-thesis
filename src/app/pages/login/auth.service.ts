@@ -28,7 +28,8 @@ export class AuthService {
     // Login, získání a uložení tokenů
   login(username: string, password: string){
 
-    let url = "http://127.0.0.1:8000/api/token/"
+    //let url = "http://127.0.0.1:8000/api/token/"
+    let url = "https://dpapp.onrender.com/api/token/"
 
     const body = {
       username: username, password: password
@@ -58,7 +59,7 @@ export class AuthService {
     this.router.navigate(['/domu'])
   }
 
-  
+  // Nepoužito
   private refreshSession(authResult:AuthResponse){
     console.log("Session refresh start")
 
@@ -74,7 +75,7 @@ export class AuthService {
 
   }
 
-  
+  // Získání nových tokenů po určité době
   startRefreshTokenTimeout(){
     console.log("timeout started")
     const token_exp = 540
@@ -86,7 +87,8 @@ export class AuthService {
   // Refresh trokenů
   refreshTokens(){
     const helper = new JwtHelperService
-    let url = "http://127.0.0.1:8000/api/token/refresh/"
+    //let url = "http://127.0.0.1:8000/api/token/refresh/"
+    let url = "https://dpapp.onrender.com/api/token/refresh/"
     console.log("Trying to refresh")
       if (!helper.isTokenExpired(localStorage.getItem('refresh_token'))) {
         console.log("Refreshing")

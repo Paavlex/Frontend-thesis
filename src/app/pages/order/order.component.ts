@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormGroup,FormControl,Validators } from '@angular/forms';
 import { OrderapiService } from './orderapi.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-order',
@@ -25,7 +26,7 @@ export class OrderComponent implements OnInit {
     lat: new FormControl('', Validators.required),
   })
   
-  constructor(private orderservice: OrderapiService){
+  constructor(private orderservice: OrderapiService,private router: Router){
 
   }
   
@@ -53,6 +54,10 @@ export class OrderComponent implements OnInit {
   order(){
     console.log(this.orderForm.value);
     console.log("this.orderForm.value");
-    this.orderservice.order(this.orderForm.value).subscribe(data =>{this.response = data}, err =>{console.log(err)});}
+    this.orderservice.order(this.orderForm.value).subscribe(data =>{
+      this.response = data
+      alert("Objednávka přijata.")
+      this.router.navigate(["/domu"])
+    }, err =>{console.log(err)});}
 
 }

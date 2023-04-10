@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CollectitemsService } from './collectitems.service';
+import { ApiService } from '../register/api.service';
 
 @Component({
   selector: 'app-collectibles',
@@ -13,9 +13,9 @@ export class CollectiblesComponent {
   openedCache=5;
   collectibles:any;
 
-  constructor(private collectiblesservice: CollectitemsService){
+  constructor(private apiService: ApiService){
     // Získání sběratelských předmětů hráče
-    this.collectiblesservice.getCollectibles().subscribe(data => {this.collectibles = data})
+    this.apiService.getAccountInfo().subscribe(data => {this.collectibles = data})
    }
 
   

@@ -30,13 +30,17 @@ export class CachedetailComponent{
     private router: Router,
     private api: ApiService
   ){
+    // Kontrola zda je uložená keš, pokud není, vrácení na původní stráku
     if (!this.cacheService.getCache()) {
       this.router.navigate(['/kese'])
     }
+    // Získání uležené keše
     this.cache = this.cacheService.getCache().cache
     this.parent = this.cacheService.getCache().parent
 
   }
+
+  // inicializace formuláře pro keš
   initializeForm(){
     this.cacheForm.setValue({
       name: null,
@@ -51,7 +55,7 @@ export class CachedetailComponent{
     
   }
 
-
+  // Inicilaizece dočasných informací o keši
   setTemoralCache(res:any){
     let tmpCache: MyCache=
       {

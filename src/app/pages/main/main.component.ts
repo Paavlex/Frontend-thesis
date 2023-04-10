@@ -1,9 +1,8 @@
 import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
-import { InformationService } from './information.service';
-import { TravelingitemsService } from '../traveling/travelingitems.service';
 import { MyCache } from 'src/app/Iinterfaces/cache';
 import { GetcarddetailService } from '../caches/getcarddetail.service';
 import { Router } from '@angular/router';
+import { ApiService } from '../register/api.service';
 
 
 
@@ -13,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent {
-
+  // Inicializace proměnných
   infoDiv=true
 
   center= {
@@ -38,28 +37,29 @@ export class MainComponent {
 
 
   constructor(
-    private informationservice: InformationService,
-    private cardDetailService: TravelingitemsService,
     private cacheService: GetcarddetailService,
+    private apiService: ApiService,
     private router: Router
     ){ 
-    this.informationservice.getAccountInfo().subscribe(data =>{this.account = data})
-    this.informationservice.getCaches().subscribe(data =>{this.caches = data,
+      // získání onformací o hráči, a získání informací o cšech keších
+    this.apiService.getAccountInfo().subscribe(data =>{this.account = data})
+    this.apiService.getCaches().subscribe(data =>{this.caches = data,
     console.warn(this.caches)})
   }
 
   // Získání informací o nakliknuté keši
   cacheInfo(id:number){
-    this.cardDetailService.getClickedCard(id).subscribe({
+    this.apiService.getClickedCard(id).subscribe({
       next: (res) => this.setClickedCard(res),
       error: (err) => console.error(err)
     })
   }
+  // nastavení nakliklé keše
   setClickedCard(cache:MyCache){
     this.clickedCache = cache
     console.warn(this.caches)
   }
-
+  // Skrytí, ukázání panelu s informacemi o keši
   showInfo(){
     this.infoDiv = false
   }

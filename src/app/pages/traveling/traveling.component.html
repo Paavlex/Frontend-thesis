@@ -10,7 +10,9 @@
                 <div class="col" *ngFor="let item of items">
                     <div class="card h-100" (click)="itemDetail(item)" role="button" >
                         <div class="img-container">
-                            <img src="{{item.cesta}}" class="card-img-top image" alt="Hollywood Sign on The Hill">
+                            <!-- Podmínka pro zobrazení buď informace že hráč předmět nevlastní, nebo obrázek předmětu -->
+                            <img *ngIf="item.idputpredmetu == 'TG00000000000000000000'" src="/assets/img/Nothing.png" class="card-img-top image py-3" alt="Nothing">
+                            <img *ngIf="item.idputpredmetu != 'TG00000000000000000000'" src="/assets/img/AIITEM.png" class="card-img-top image py-3" alt="AiItem">
                         </div>
                         <div class="card-body">
                             

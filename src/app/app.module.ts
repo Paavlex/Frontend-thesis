@@ -13,7 +13,7 @@ import { NavbarComponent } from './sharedpages/navbar/navbar.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { MainComponent } from './pages/main/main.component';
-import { MapComponent } from './pages/map/map.component';
+//import { MapComponent } from './pages/map/map.component';
 import { OrderComponent } from './pages/order/order.component';
 import { CollectiblesComponent } from './pages/collectibles/collectibles.component';
 import { TravelingComponent } from './pages/traveling/traveling.component';
@@ -25,7 +25,8 @@ import { CachedetailComponent } from './pages/cachedetail/cachedetail.component'
 import { CacheinfoComponent } from './pages/cacheinfo/cacheinfo.component';
 import { ItemdetailComponent } from './pages/itemdetail/itemdetail.component';
 import { LinebreakPipe } from './pipes/linebreak.pipe';
-
+import { ItemComponent } from './pages/item/item.component';
+// Import použitých komponentů
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,7 @@ import { LinebreakPipe } from './pipes/linebreak.pipe';
     LoginComponent,
     RegisterComponent,
     MainComponent,
-    MapComponent,
+    //MapComponent,
     OrderComponent,
     CollectiblesComponent,
     TravelingComponent,
@@ -44,7 +45,8 @@ import { LinebreakPipe } from './pipes/linebreak.pipe';
     CachedetailComponent,
     CacheinfoComponent,
     ItemdetailComponent,
-    LinebreakPipe
+    LinebreakPipe,
+    ItemComponent
   ],
   imports: [
     BrowserModule,

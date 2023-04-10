@@ -6,7 +6,6 @@ import { AccountComponent } from './pages/account/account.component';
 import { CollectiblesComponent } from './pages/collectibles/collectibles.component';
 import { LoginComponent } from './pages/login/login.component';
 import { MainComponent } from './pages/main/main.component';
-import { MapComponent } from './pages/map/map.component';
 import { OrderComponent } from './pages/order/order.component';
 import { OrderitemComponent } from './pages/orderitem/orderitem.component';
 import { RegisterComponent } from './pages/register/register.component';
@@ -15,8 +14,9 @@ import { CachesComponent } from './pages/caches/caches.component';
 import { CachedetailComponent } from './pages/cachedetail/cachedetail.component';
 import { CacheinfoComponent } from './pages/cacheinfo/cacheinfo.component';
 import { ItemdetailComponent } from './pages/itemdetail/itemdetail.component';
+import { ItemComponent } from './pages/item/item.component';
 
-
+// Vytvoření cest v aplikaci první je cesta, následně který kopmponent, a poté ochrana pomocí AuthGuard
 const routes: Routes = [
   {path: '', component:LoginComponent},
   {path: 'domu',component:MainComponent, canActivate: [AuthGuardGuard]},
@@ -30,6 +30,7 @@ const routes: Routes = [
   {path: 'detail-kese', component:CachedetailComponent, canActivate: [AuthGuardGuard]},
   {path: 'info-kese', component:CacheinfoComponent, canActivate: [AuthGuardGuard]},
   {path: 'detail-predmetu', component:ItemdetailComponent, canActivate: [AuthGuardGuard]},
+  {path: 'putovni-predmet', component:ItemComponent, canActivate: [AuthGuardGuard]},
 
 ];
 

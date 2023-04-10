@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { MyItem } from 'src/app/Iinterfaces/my-item';
 import { GetcarddetailService } from '../caches/getcarddetail.service';
 import { Router } from '@angular/router';
-import { TravelingitemsService } from '../traveling/travelingitems.service';
 import { MyCache } from 'src/app/Iinterfaces/cache';
 import { Marker } from 'src/app/Iinterfaces/marker';
 import { map } from 'rxjs';
+import { ApiService } from '../register/api.service';
 
 @Component({
   selector: 'app-itemdetail',
@@ -40,8 +40,8 @@ export class ItemdetailComponent {
   constructor(
     private detailService: GetcarddetailService,
     private router: Router,
-    private cardDetailService: TravelingitemsService,
-    private cacheService: GetcarddetailService
+    private cacheService: GetcarddetailService,
+    private apiService: ApiService
     ){
     if (!this.detailService.getItem()) {
       this.router.navigate(['/putovni-predmety'])
@@ -50,14 +50,14 @@ export class ItemdetailComponent {
   
     // Získání keší (kterými předmět prošel) a pozic keší
     this.caches = this.getCardInfo()
-    this.markers = this.cardDetailService.getMarkers(this.item.karty)
+    this.markers = this.apiService.getMarkers(this.item.karty)
   }
 
   ngOnInit(){
     
   }
 
-  // skyrití/Otevření mapy
+  // skyrytí/Otevření mapy
   toggleDiv(){
     this.infoDiv = false
   }
@@ -70,25 +70,28 @@ export class ItemdetailComponent {
   getCardInfo(){
     let cards = this.item.karty
     
-    return this.cardDetailService.getCardsFromItem(cards)
+    return this.apiService.getCardsFromItem(cards)
 
   }
 
   // Získání informací o jedné keši (nakliké na mapě)
   cacheInfo(id:number){
-    this.cardDetailService.getClickedCard(id).subscribe({
+    this.apiService.getClickedCard(id).subscribe({
       next: (res) => this.setClickedCard(res),
       error: (err) => console.error(err)
     })
   }
 
+  // Uložení nakliknuté keše do lokální proměnné
   setClickedCard(cache:MyCache){
     this.clickedCache = cache
     console.warn(this.clickedCache)
   }
+  // tlačítko zpět
   goBack(){
     this.router.navigate(['/putovni-predmety'])
   }
+  // Uložení nakliknuté keše a přejití na stránku s detailem
   setCache(){
     this.cacheService.setCache(this.clickedCache,false)
     this.router.navigate(['/info-kese'])

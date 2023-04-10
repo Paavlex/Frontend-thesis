@@ -15,6 +15,7 @@ export class CacheinfoComponent {
     private cacheService: GetcarddetailService,
     private router: Router
     ){
+    // získání uležené keše
     this.cache = this.cacheService.getCache().cache
     this.parent = this.cacheService.getCache().parent
 
